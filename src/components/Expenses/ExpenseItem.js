@@ -4,7 +4,6 @@ import Card from '../UI/Card';
 import { useState } from 'react';
 
 function ExpenseItem(props) {
-  const expenseTitle = props.title;
   const expenseAmount = props.amount;
 
   const [title, setTitle] = useState(props.title);
@@ -19,7 +18,7 @@ function ExpenseItem(props) {
       <div className="expense-item__description">
         <h2> {title} </h2>
         <div className="expense-item__price">${expenseAmount} </div>
-        <button onClick={clickHandler} >Click me</button>
+        {/* <button onClick={clickHandler} >Click me</button> */}
       </div>
     </Card>
   );
