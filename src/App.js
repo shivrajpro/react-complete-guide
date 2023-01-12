@@ -21,6 +21,12 @@ const DUMMY_EXPENSES = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
+  {
+    "title": "A Book",
+    "amount": "29.99",
+    "date": new Date("2022-12-22T00:00:00.000Z"),
+    "id": "0.11636513279712357"
+  }  
 ];
 
 function App() {
