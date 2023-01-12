@@ -48,7 +48,7 @@ const ExpenseForm = (props) => {
       date: new Date(enteredDate)
     }
 
-    console.log('data', expenseData);
+    // console.log('data', expenseData);
     props.onSaveExpenseData(expenseData);
     clearForm();
   }
@@ -88,8 +88,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
-        <button type='submit'>Add Expense</button>
+        <button type='submit'>Save Expense</button>
         <button type='reset' onClick={clearForm} >Reset</button>
+        <button type='button' onClick={props.onCancel} >Cancel</button>
       </div>
     </form>
   );
