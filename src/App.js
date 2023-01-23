@@ -1,9 +1,11 @@
-import Header from "./Layout/Header";
+import Header from "./components/Layout/Header";
+import Meals from "./components/Meals/Meals";
 
 function App() {
   return (
     <div>
       <Header/>
+      <Meals/>
     </div>
   );
 }
