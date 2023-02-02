@@ -10,6 +10,7 @@ const cartReducer = (state, action)=>{
         const updatedItems = state.items.concat(action.item);
         const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
 
+        console.log("IN REDUCER",action,updatedItems)
         return {
             items:updatedItems,
             totalAmount: updatedTotalAmount
@@ -22,6 +23,7 @@ const CartProvider = (props)=>{
     const [cartState, dispatchCartFn] = useReducer(cartReducer, defaultCartState);
 
     const onAddItemToCart = (item)=>{
+        console.log("ITEM",item)
         dispatchCartFn({type:'ADD_ITEM', item:item});
     }
     
@@ -30,10 +32,10 @@ const CartProvider = (props)=>{
     }
     
     const cartContext = {
-        items:[],
-        totalAmount:0,
-        onAddItem:onAddItemToCart,
-        onRemoveItem:onRemoveItemFromCart
+        items:cartState.items,
+        totalAmount:cartState.totalAmount,
+        addItem:onAddItemToCart,
+        removeItem:onRemoveItemFromCart
     }
 
     return (
