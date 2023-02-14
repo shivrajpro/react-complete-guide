@@ -1,9 +1,9 @@
-import { Fragment, useState, useEffect, Component } from 'react';
+import { Component, Fragment } from 'react';
 
-import Users from './Users';
-import classes from './UserFinder.module.css';
 import UsersContext from '../store/users-context';
 import ErrorBoundary from './ErrorBoundary';
+import classes from './UserFinder.module.css';
+import Users from './Users';
 
 class UserFinder extends Component {
   static contextType = UsersContext;
@@ -25,7 +25,7 @@ class UserFinder extends Component {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
         filteredUsers: this.context.users.filter((user) =>
-          user.name.includes(this.state.searchTerm)
+          user.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         ),
       });
     }
