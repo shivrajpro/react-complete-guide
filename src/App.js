@@ -1,52 +1,29 @@
-import React, { useEffect, useState } from "react";
+import { useState } from 'react';
 
-import Tasks from "./components/Tasks/Tasks";
-import NewTask from "./components/NewTask/NewTask";
-import useHttp from "./hooks/use-http";
+import Cart from './components/Cart/Cart';
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import CartProvider from './store/CartProvider';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [cartIsShown, setCartIsShown] = useState(false);
 
-  const { isLoading, error, sendRequest: fetchTasks } = useHttp();
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
 
-  useEffect(() => {
-    const transformTasks = (tasksObj) => {
-      const loadedTasks = [];
-
-      for (const taskKey in tasksObj) {
-        loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
-      }
-
-      setTasks(loadedTasks);
-    };
-  
-    fetchTasks(
-      { url: "https://react-http-f2187-default-rtdb.firebaseio.com/tasks.json"},
-      transformTasks
-    );
-
-  }, [fetchTasks]);
-  // If we specify only fetchTasks reference here in the dependency
-  // it will lead to an inifinite loop of API calls because the reference of fetchTasks
-  // keeps on changing after every request as its an async function
-  // to avoid this - we must wrap the async function in useHttp hook
-  // in useCallback hook which returns the same reference after an API call
-  // and this useEffect hoook does not go in infinite loop
-
-  const taskAddHandler = (task) => {
-    setTasks((prevTasks) => prevTasks.concat(task));
+  const hideCartHandler = () => {
+    setCartIsShown(false);
   };
 
   return (
-    <React.Fragment>
-      <NewTask onAddTask={taskAddHandler} />
-      <Tasks
-        items={tasks}
-        loading={isLoading}
-        error={error}
-        onFetch={fetchTasks}
-      />
-    </React.Fragment>
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
+      <Header onShowCart={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
+    </CartProvider>
   );
 }
 
