@@ -1,13 +1,23 @@
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+function HomePage() {
+  const navigate = useNavigate();
+
+  function navigateHandler() {
+    navigate('/products');
+  }
+
   return (
-    <Fragment>
+    <>
       <h1>My Home Page</h1>
-      <Link to="/abc" >ABC</Link>
-    </Fragment>
+      <p>
+        Go to <Link to="products">the list of products</Link>.
+      </p>
+      <p>
+        <button onClick={navigateHandler}>Navigate</button>
+      </p>
+    </>
   );
-};
+}
 
 export default HomePage;
