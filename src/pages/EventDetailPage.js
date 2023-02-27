@@ -5,7 +5,7 @@ function EventDetailPage() {
   return (
     <>
       <h1>Details of your event are as follows:</h1>
-      <p>Event Name: {params.eventId} </p>
+      <p>Event ID: {params.eventId} </p>
       <p>To update this event: <Link to='edit' >Click here</Link> </p>
     </>
   );

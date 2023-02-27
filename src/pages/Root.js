@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 
-import EventsNavigation from "../components/EventsNavigation";
 import MainNavigation from "../components/MainNavigation";
 
 function RootLayout() {
@@ -8,7 +7,6 @@ function RootLayout() {
     <>
       <MainNavigation />
       <main>
-        <EventsNavigation />
         <Outlet />
       </main>
     </>

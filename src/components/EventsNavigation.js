@@ -7,10 +7,10 @@ function EventsNavigation() {
       <nav>
         <ul className={classes.list}>
           <li>
-            <Link to="events">All Events</Link>
+            <Link to="">All Events</Link>
           </li>
           <li>
-            <Link to="events/new">New Event</Link>
+            <Link to="new">New Event</Link>
           </li>
         </ul>
       </nav>
