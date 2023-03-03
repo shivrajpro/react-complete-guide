@@ -15,12 +15,12 @@ function EventDetailPage() {
 
   return (
     <>
-      <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading event detail...</p>}>
+      <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
         <Await resolve={event}>
           {(loadedEvent) => <EventItem event={loadedEvent} />}
         </Await>
       </Suspense>
-      <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading all events...</p>}>
+      <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
         <Await resolve={events}>
           {(loadedEvents) => <EventsList events={loadedEvents} />}
         </Await>
@@ -71,8 +71,8 @@ export async function loader({ request, params }) {
   const id = params.eventId;
 
   return defer({
-    event: await loadEvent(id),//takes 2 sec (the page waits for this promise to resolve 1st)
-    events: loadEvents(),// takes 1 sec (even if this API is faster)
+    event: await loadEvent(id),
+    events: loadEvents(),
   });
 }
 

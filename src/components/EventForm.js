@@ -9,7 +9,7 @@ import {
 
 import classes from './EventForm.module.css';
 
-function EventForm({ method, eventData }) {
+function EventForm({ method, event }) {
   const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -36,7 +36,7 @@ function EventForm({ method, eventData }) {
           type="text"
           name="title"
           required
-          defaultValue={eventData ? eventData.title : ''}
+          defaultValue={event ? event.title : ''}
         />
       </p>
       <p>
@@ -46,7 +46,7 @@ function EventForm({ method, eventData }) {
           type="url"
           name="image"
           required
-          defaultValue={eventData ? eventData.image : ''}
+          defaultValue={event ? event.image : ''}
         />
       </p>
       <p>
@@ -56,7 +56,7 @@ function EventForm({ method, eventData }) {
           type="date"
           name="date"
           required
-          defaultValue={eventData ? eventData.date : ''}
+          defaultValue={event ? event.date : ''}
         />
       </p>
       <p>
@@ -66,7 +66,7 @@ function EventForm({ method, eventData }) {
           name="description"
           rows="5"
           required
-          defaultValue={eventData ? eventData.description : ''}
+          defaultValue={event ? event.description : ''}
         />
       </p>
       <div className={classes.actions}>
