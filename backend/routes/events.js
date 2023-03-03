@@ -11,7 +11,7 @@ const {
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  console.log(req.token);
+  console.log("GET - TOKEN",req.token);
   try {
     const events = await getAll();
     res.json({ events: events });
@@ -32,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
 router.use(checkAuth);
 
 router.post('/', async (req, res, next) => {
-  console.log(req.token);
+  console.log("POST - TOKEN",req.token);
   const data = req.body;
 
   let errors = {};
